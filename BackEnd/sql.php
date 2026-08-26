@@ -8,13 +8,21 @@ $password="root";
 
 $db = "db_users";
 
+try{
+
 $con = new mysqli($host,$user,$password,$db);
 
-if($con->connect_error){
-    die(json_encode(["error" => "Connection Failed to connect:" . $con->connect_error]));
-}
+// echo json_encode(["status" => "Success", "message" => "Connected and used db_users"]);
 
-echo json_encode(["status" => "Success", "message" => "Connected and used db_users"]);
+$res = $con->query("select * from tb_users where Fullname = \"Loren Ipsum\"");
+
+$total = $res->fetch_row();
+
+echo json_encode(["status"=>"Success","object" => $total]);
 
 $con->close();
+}catch(Throwable $e){
+echo json_encode(["DB Error: " => $e]);
+}
+
 ?>

@@ -15,12 +15,21 @@ async function LoadData(){ // async function
 
         let data = await response.json();
 
-        console.log(data.message);
+        
+
+        if(data.error){
+            console.log("DB Error: "+data.error);
+        }
+
+        console.log(data.object);
+
+        let arr = data.object;
+        console.log(typeof(arr));
 
         let nrow = table.insertRow();
         let ncell = nrow.insertCell();
 
-        ncell.innerHTML = "Successful DB connection established!";
+        ncell.innerHTML = data.object;
         console.log("Data loaded!")
         return 0;
 

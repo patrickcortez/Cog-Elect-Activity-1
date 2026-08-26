@@ -5,7 +5,7 @@
 
         <!-- Load script and Css -->
 
-        <script src="script.js"></script> 
+        <script src="script.js" defer></script> 
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
